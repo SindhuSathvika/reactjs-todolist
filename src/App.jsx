@@ -7,8 +7,9 @@ function App() {
   const [todoValue, setTodoValue] = useState('')
 
   function persistData(newList) {
-    localStorage.setItem('todos', JSON.stringify({ todos: newList }))
+    localStorage.setItem('todos', JSON.stringify({todos: newList}))
   }
+  
 
   function handleAddTodos(newTodo) {
     const newTodoList = [...todos, newTodo]
@@ -29,22 +30,18 @@ function App() {
     setTodoValue(valueToBeEdited)
     handleDeleteTodo(index)
   }
-
   useEffect(() => {
     if (!localStorage) {
       return
     }
-
     let localTodos = localStorage.getItem('todos')
-    if (!localTodos) {
+    if(!localTodos){
       return
     }
-
-    console.log(localTodos)
     localTodos = JSON.parse(localTodos).todos
     setTodos(localTodos)
-
   }, [])
+  
 
   return (
     <>
